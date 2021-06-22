@@ -1,0 +1,33 @@
+# learning_course
+# key:         discourse_theme_development
+# /learning_course
+
+# learning_unit
+# course:       discourse_theme_development
+# number:       2
+# title:        Working with CSS in Discourse Themes
+# description:  This unit will teach you about working with CSS in Discourse
+                Themes. Make sure you've completed "Introduction to Discourse
+                Theme Development" before starting this unit. When you're ready
+                to start, clone the unit theme listed in the references and
+                start watching it on the Discourse Theme creator.
+# references:   https://github.com/pavilionedu/discourse-theme-css,
+                https://theme-creator.discourse.org
+# /learning_unit
+
+# learning_step
+# unit:         discourse_theme_development.2
+# number:       1
+# title:        Working with SASS
+# description:  Discourse uses a CSS preprocessor called SASS, which you'll need
+#               to have a passing familiarity with to start working with
+#               Discourse CSS. For the purposes of this course, the minimum you
+#               need is to watch the youtube video, and read the guide, linked
+#               in the references below. If you like to understand something
+#               in more depth before using it, take one of the courses listed
+#               in the Hackr.io link below. When you've finished your background
+#               reading head over to ``common/common.scss`` for the next step.
+# references:   https://www.youtube.com/watch?v=akDIJa0AP5c,
+#               https://sass-lang.com/guide,
+#               https://hackr.io/tutorials/learn-sass
+# /learning_step

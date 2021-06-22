@@ -1,0 +1,9 @@
+{
+  "name": "Discourse Theme CSS",
+  "about_url": "https://github.com/pavilionedu/discourse-theme-css.git",
+  "license_url": "https://github.com/pavilionedu/discourse-theme-css/blob/master/LICENSE.txt",
+  "authors": "Angus McLeod",
+  "theme_version": "0.1.0",
+  "assets": {},
+  "color_schemes": {}
+}

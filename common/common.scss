@@ -1,0 +1,305 @@
+/* learning_step
+* unit:        discourse_theme_development.2
+* number:      2
+* title:       CSS Specificity
+* description: Normally when adding CSS to a Discourse theme we're overriding
+*              existing CSS rules in core Discourse. This means we need to
+*              understand CSS Specificty. If you're not sure what that is, or
+*              would like a refresher, first go and read the Mozilla docs linked
+*              below, in full. Understanding specificity and its quirks is key
+*              to working with CSS in Discourse so don't skip that reading. If
+*              your unclear on something mentioned in the docs, post a comment
+*              below and @mention your tutor to clarify any points before 
+*              moving on.
+* references:  https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
+*/
+/* /learning_step */
+
+/* learning_step
+* unit:        discourse_theme_development.2
+* number:      3
+* title:       Overriding Discourse CSS Rules
+* description: Let's look at specificity in Discourse by making all avatars in
+*              Discourse topic lists square in shape instead of circular. Open
+*              up a preview of this theme on the Discourse Theme Creator, and go
+*              to the latest topic list. Use your browser's web tools to inspect
+*              the avatar on the first topic list item. In the "Styles" list in
+*              the inspector you'll see two rules like the one below. The one
+*              from the file called ``discourse.scss`` is from core Discourse.
+*              The one from the file with a name like ``theme_5027.scss`` (the 
+*              numbers might be different) is the one from our theme.
+*
+*              Change the ``border-radius`` to ``0`` in the theme rule (below).
+*              You'll see the avatars in the topic list change to squares. Now,
+*              the reason our theme rule is more specific than the core rule is
+*              because theme CSS is always added to the page after core CSS.
+*              A general rule of thumb is that you should use the least specific
+*              rule to suit your need, so in most cases you should start by just
+*              using the same specificity as you see in the equivalent core rule.
+*/
+img.avatar {
+  border-radius: 50%;
+}
+/* /learning_step */
+
+/* learning_step
+* unit:        discourse_theme_development.2
+* number:      4
+* title:       Be the Goldilocks of specificity
+* description: You might notice an issue with the change we made in the previous
+*              step. We said we just wanted to change the avatars in the topic
+*              list to squares, however if you look at the avatar on the right
+*              over the header, it's also a square now too. This leads us to the
+*              next point about specificity, while we want the least specific
+*              rule, we still want one that's specific enough. We want our rules
+*              to be the Goldilocks of specificity.
+*
+*              Remember we set the goal of "making all avatars in Discourse
+*              topic lists square", so let's see if we can use a parent class
+*              specific to topic lists. Inspect the parent elements of 
+*              ``img.avatar`` and you'll see there are a few candidates. When
+*              choosing the right parent, naming conventions come in handy. If
+*              we're targeting the topic list, using the parent ``.topic-list``
+*              is better than using the parent ``.contents``. The ``.contents``
+*              class might be used in other elements that contain avatars we 
+*              want to keep as circles. 
+*
+*              Once you've chosen a parent, add your new rule in the blank space
+*              below this step in your copy of our theme and see if it achieves
+*              our goal. You'll also need to change the first rule we changed
+*              (below step 2), back to its original value.
+*/
+
+
+/* /learning_step */
+
+/* learning_step
+* unit:        discourse_theme_development.2
+* number:      5
+* title:       Don't forget mobile!
+* description: Whenever you're overriding Discourse CSS rules, never forget that
+*              the rules may be slightly different on mobile. Always check how
+*              your changes look on mobile before moving on. Let's use what we
+*              learned in the "Introduction to Discourse Theme Development"
+*              course to restrict our square avatar to mobile only. Remember you
+*              shouldn't be using @media queries for that. Use what we learnt about
+*              ``mobile.scss``. 
+*/
+/* /learning_step */
+
+/* learning_step
+* unit:        discourse_theme_development.2
+* number:      6
+* title:       How to target specific pages
+* description: So far we've been talking about applying general CSS principles to 
+*              Discourse. Now we're going to talk about a few Discourse-specific
+*              practices and approaches you'll find useful, the first being how
+*              to target specific pages.
+*
+*              Discourse adds a number of useful classes to the ``body`` tag
+*              that can help us target specific pages. Open up the preview of 
+*              our theme on the Theme Creator and go to the "School" category.
+*              Turns out it had a purple background this whole time! Let's see 
+*              how that works.
+*
+*              Open the web inspector and look the ``body`` tag in the page HTML.
+*              You'll see it has (at least) three classes:
+*
+*              ```
+*              category category-school docked
+*              ```
+*
+*              The ``docked`` class (and others such as ``drop-down-mode``) tell
+*              you what the header is doing. Don't worry about them for now. The
+*              important classes for now are
+*
+*              - ``category`` added when in a category
+*              - ``category-name`` added when you're in a category called "name"
+*              - ``archetype-regular`` added when in a topic
+*              - ``archetype-private_message`` added when in a private message
+*              - ``user-``  added when looking at user pages
+*
+*              You might be wondering what's going on with the ``user-``. That's
+*              a partial class, which you'll need to use to target all user
+*              pages, which each have their own class, e.g. ``user-summary-page``
+*              or ``user-activity-page``.
+*
+*              You can use partial classes in CSS by using attribute selectors
+*              (see the Mozilla docs in the references for more). See if you can
+*              use a partial class in an attribute selector to make all the
+*              subcategories of School, but not School itself, have a purple
+*              background. While you're thinking about that, also consider what
+*              the ``#main-outlet`` rule is doing below. Why do we need it and
+*              how is it working? If you're not sure, go back to the SASS 
+*              materials linked in our first step and come back when that makes
+*              sense.
+*
+* references:  https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors
+*/
+body.category-school {
+  background-color: purple;
+
+  #main-outlet {
+    background-color: white;
+  }
+}
+/* /learning_step */
+
+/* learning_step
+* unit:        discourse_theme_development.2
+* number:      7
+* title:       How to handle the header
+* description: There's a few important things to know when styling the Discourse
+*              header.
+*
+*              Firstly, if you're changing the header's color you should use the
+*              core Discourse ``header background`` and ``header primary`` color
+*              scheme variables rather than changing the color via CSS. This 
+*              makes it easier to make your color changes compatible with both
+*              light and dark themes (aside from avoiding duplication).
+*
+*              Secondly, something that often trips people up is that when you
+*              scroll in a topic or private message the contents of the header
+*              changes, showing a smaller logo alongside the topic title,
+*              category and tags. Particularly if you make any CSS layout changes
+*              to the header, make sure you check what they look like when
+*              scrolling in both a topic and private message. Go to a topic on
+*              the Theme Creator now, scroll down and have a look at the header
+*              to see what I mean.
+*
+*              Thirdly, the header's menus, the site menu and the user menu have
+*              three different layouts determined by the type and size of the screen:
+*
+*              - ``drop-down``: On a normal desktop screen, the menus "drop down" from their icons
+*              - ``slide-in (desktop)``: On a thin desktop screen, the menus are fixed on the right, below the header.
+*              - ``slide-in (mobile)``: On a mobile screen, the menus slide in from the left or right.
+*              
+*              Let's put that last tip into practice by changing box shadow of
+*              the header. When you look at the rule below, the first thing to
+*              consider is what is going on with the ``shadow('header')``? If
+*              you're not sure, go back to the SASS materials linked in the first
+*              step before you continue. Once you're clear on that, change the
+*              header box-shadow to
+*
+*              ```
+*              box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 75%);
+*              ```
+*
+*              Once you've confirmed that worked (the shadow should be darker),
+*              open the site menu. Now that we've made the header shadow darker,
+*              the site menu shadow looks too light. Find the relevant rule
+*              (just specific enough), and add your own rule below our theme's
+*              ``.d-header`` rule, with a darker box-shadow. Once you've darkened
+*              that shadow, now reduce the width of your browser window until
+*              the menu shifts to ``slide-in (desktop)`` mode. Looks like you've
+*              got another shadow to darken there!
+*
+*              Finally, use your web inspector to change your browser to 
+*              "responsive" mode and see what shadows we need to tweak there...
+*              hm perhaps we don't actually want to change the mobile shadow eh?
+*              The mobile slide-in menu has a semi-transparent overlay beneath
+*              it already, so the additional darkened shadow is too much. So how
+*              do we restrict our ``menu-panel`` changes to desktop? Once you've
+*              answered that, post a comment on this step with a link to your
+*              solution on Theme Creator.
+* references:  app/assets/stylesheets/common/foundation/variables.scss
+*/
+.d-header {
+  box-shadow: shadow("header");
+}
+/* /learning_step */
+
+/* learning_step
+* unit:        discourse_theme_development.2
+* number:      8
+* title:       Styling buttons and navs
+* description: It's worth reviewing the various button classes in ``buttons.scss``
+*              and the style guide (see the references). One thing to note is
+*              that not all of the things that look like buttons are buttons. In
+*              particular, the list and profile navigation links, and the buttons
+*              on the bottom of posts have their own unique rules.
+*
+*              The most common button classes you'll see and work with are the
+*              ``btn`` class, and the ``btn-primary`` class. A primary button
+*              is typically a call to action (CTA), the main difference being its
+*              background color and text color. If you do end up changing the
+*              colors of buttons using CSS watch out for all of its different
+*              states and some of its child elements, which may have more specific
+*              colors. To get a sense of the variation there, look at the different
+*              color variables passed as arguments into the ``btn`` mixin in
+*              ``buttons.scss``.
+*
+*              One thing you'll sometimes need to do is to turn something that
+*              wasn't a button into a button. We'll do that now to experiment
+*              with buttons and SASS mixins. Have a look at the empty rule block
+*              below. It's specific to the "cancel" link in the Discourse composer.
+*              Open up the composer on the Theme Creator to have a look at it.
+*              We can turn this into a button with one single line. How would
+*              we do that? The import above the rule provides the clue.
+*              
+* references:  app/assets/stylesheets/common/components/buttons.scss,
+*              https://theme-creator.discourse.org/styleguide/atoms
+*/
+@import "common/components/buttons";
+
+#reply-control .save-or-cancel .cancel {
+  @include btn;
+}
+/* /learning_step */
+
+/* learning_step
+* unit:        discourse_theme_development.2
+* number:      9
+* title:       Category Badges
+* description: Category badges are one of the more complicated UX elements in
+*              Discourse. To get a sense of that, have a look at the Category
+*              Highlighter theme component, linked in the references. It seems
+*              simple on the surface, we just need to apply some some different
+*              styles to a the badge for a specific  category right? Take a look
+*              at the ``common/common.scss`` file though and you'll see it's a
+*              bit more complicated.
+*
+*              There are some more straightforward things we can do with category
+*              badges however. Let's see if we can turn the "Box" badge style
+*              into a "Border" badge style, with the category color showing 
+*              around the border of the badge, like so
+*
+*              ![category-badge-border-style](https://pavilion-assets.nyc3.digitaloceanspaces.com/education/category-badge-border-style.png)
+*
+*              First we need to know that there are three types of category badge
+*              bullet, bar and box, which can be set in the ``category style``
+*              site setting. Have a look at them in the "Categories" section of 
+*              the Styleguide, linked below. Keep in mind that any changes you
+*              make to the category badge styles either need to be on an forum
+*              which you control, or you have to handle the possiblity that a
+*              different style will be selected.
+*
+*              Second, we need to know that there are three main parts to a
+*              category badge, the wrapper, the background color, and the
+*              content. You can see empty rules sets for all three below. You'll 
+*              notice on our wrapper that we're just specifying the box style
+*              by using the ``box`` class. Go to the theme creator and inspect
+*              a category badge to see the three elements and their normal rules.
+*
+*              Using what we've learned in this unit, see if you can turn our
+*              "box" style into a "border" style.
+*
+* references:  https://meta.discourse.org/t/category-highlighter/148318,
+*              https://theme-creator.discourse.org/styleguide/molecules/categories
+*/
+.badge-wrapper.box {
+  // wrapper
+
+  .badge-category-bg {
+    // background color
+  }
+
+  .badge-category {
+    // content
+
+    .category-name {
+
+    }
+  }
+}
+/* /learning_step */
