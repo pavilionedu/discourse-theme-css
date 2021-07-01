@@ -11,7 +11,7 @@
 #               Theme Development" before starting this unit. When you're ready
 #               to start, clone the unit theme listed in the references and
 #               start watching it on the Discourse Theme creator.
-# references:   https://github.com/pavilionedu/discourse-theme-introduction,
+# references:   https://github.com/pavilionedu/discourse-theme-introduction
 #               https://theme-creator.discourse.org
 # /learning_unit
 
@@ -27,7 +27,7 @@
 #               in more depth before using it, take one of the courses listed
 #               in the Hackr.io link below. When you've finished your background
 #               reading head over to ``common/common.scss`` for the next step.
-# references:   https://www.youtube.com/watch?v=akDIJa0AP5c,
-#               https://sass-lang.com/guide,
+# references:   https://www.youtube.com/watch?v=akDIJa0AP5c
+#               https://sass-lang.com/guide
 #               https://hackr.io/tutorials/learn-sass
 # /learning_step

@@ -237,7 +237,7 @@ body.category-school {
 *              We can turn this into a button with one single line. How would
 *              we do that? The import above the rule provides the clue.
 *              
-* references:  app/assets/stylesheets/common/components/buttons.scss,
+* references:  app/assets/stylesheets/common/components/buttons.scss
 *              https://theme-creator.discourse.org/styleguide/atoms
 */
 @import "common/components/buttons";
@@ -284,7 +284,7 @@ body.category-school {
 *              Using what we've learned in this unit, see if you can turn our
 *              "box" style into a "border" style.
 *
-* references:  https://meta.discourse.org/t/category-highlighter/148318,
+* references:  https://meta.discourse.org/t/category-highlighter/148318
 *              https://theme-creator.discourse.org/styleguide/molecules/categories
 */
 .badge-wrapper.box {
