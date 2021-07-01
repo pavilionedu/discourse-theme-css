@@ -4,7 +4,7 @@
 * title:       CSS Specificity
 * description: Normally when adding CSS to a Discourse theme we're overriding
 *              existing CSS rules in core Discourse. This means we need to
-*              understand CSS Specificty. If you're not sure what that is, or
+*              understand CSS Specificity. If you're not sure what that is, or
 *              would like a refresher, first go and read the Mozilla docs linked
 *              below, in full. Understanding specificity and its quirks is key
 *              to working with CSS in Discourse so don't skip that reading. If
@@ -67,7 +67,7 @@ img.avatar {
 *              Once you've chosen a parent, add your new rule in the blank space
 *              below this step in your copy of our theme and see if it achieves
 *              our goal. You'll also need to change the first rule we changed
-*              (below step 2), back to its original value.
+*              (above), back to its original value.
 */
 
 
@@ -243,7 +243,7 @@ body.category-school {
 @import "common/components/buttons";
 
 #reply-control .save-or-cancel .cancel {
-  
+
 }
 /* /learning_step */
 
