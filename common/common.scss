@@ -70,7 +70,6 @@ img.avatar {
 *              (above), back to its original value.
 */
 
-
 /* /learning_step */
 
 /* learning_step
@@ -152,6 +151,8 @@ body.category-school {
 /* learning_step
 * unit:        discourse_theme_development.2
 * number:      7
+* review:      peer
+* mark:        pass_change_fail
 * title:       How to handle the header
 * description: There's a few important things to know when styling the Discourse
 *              header.
@@ -175,7 +176,9 @@ body.category-school {
 *              three different layouts determined by the type and size of the screen:
 *
 *              - ``drop-down``: On a normal desktop screen, the menus "drop down" from their icons
+*
 *              - ``slide-in (desktop)``: On a thin desktop screen, the menus are fixed on the right, below the header.
+*
 *              - ``slide-in (mobile)``: On a mobile screen, the menus slide in from the left or right.
 *              
 *              Let's put that last tip into practice by changing box shadow of
@@ -202,11 +205,11 @@ body.category-school {
 *              "responsive" mode and see what shadows we need to tweak there...
 *              hm perhaps we don't actually want to change the mobile shadow eh?
 *              The mobile slide-in menu has a semi-transparent overlay beneath
-*              it already, so the additional darkened shadow is too much. So how
-*              do we restrict our ``menu-panel`` changes to desktop? Once you've
-*              answered that, post a comment on this step with a link to your
-*              solution on Theme Creator.
-* references:  app/assets/stylesheets/common/foundation/variables.scss
+*              it already, so the additional darkened shadow is too much.
+*
+* exercise:    How do we restrict our ``menu-panel`` changes to desktop? Post a 
+*              comment on this step with a link to your solution on Theme Creator.
+* references:  https://github.com/discourse/discourse/tree/main/app/assets/stylesheets/common/foundation/variables.scss
 */
 .d-header {
   box-shadow: shadow("header");
@@ -233,7 +236,7 @@ body.category-school {
 *              color variables passed as arguments into the ``btn`` mixin in
 *              ``buttons.scss``.
 *
-*              One thing you'll sometimes need to do is to turn something that
+* exercise:    One thing you'll sometimes need to do is to turn something that
 *              wasn't a button into a button. We'll do that now to experiment
 *              with buttons and SASS mixins. Have a look at the empty rule block
 *              below. It's specific to the "cancel" link in the Discourse composer.
@@ -241,7 +244,7 @@ body.category-school {
 *              We can turn this into a button with one single line. How would
 *              we do that? The import above the rule provides the clue.
 *              
-* references:  app/assets/stylesheets/common/components/buttons.scss
+* references:  https://github.com/discourse/discourse/tree/main/app/assets/stylesheets/common/components/buttons.scss
 *              https://theme-creator.discourse.org/styleguide/atoms
 */
 @import "common/components/buttons";
@@ -255,6 +258,8 @@ body.category-school {
 * unit:        discourse_theme_development.2
 * number:      9
 * title:       Category Badges
+* review:      peer
+* mark:        pass_change_fail
 * description: Category badges are one of the more complicated UX elements in
 *              Discourse. To get a sense of that, have a look at the Category
 *              Highlighter theme component, linked in the references. It seems
@@ -285,11 +290,12 @@ body.category-school {
 *              by using the ``box`` class. Go to the theme creator and inspect
 *              a category badge to see the three elements and their normal rules.
 *
-*              Using what we've learned in this unit, see if you can turn our
+* exercise:    Using what we've learnt in this unit, see if you can turn our
 *              "box" style into a "border" style.
 *
 * references:  https://meta.discourse.org/t/category-highlighter/148318
 *              https://theme-creator.discourse.org/styleguide/molecules/categories
+* next_step:   FINISH
 */
 .badge-wrapper.box {
   // wrapper

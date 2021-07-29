@@ -27,9 +27,9 @@
 #               need is to watch the youtube video, and read the guide, linked
 #               in the references below. If you like to understand something
 #               in more depth before using it, take one of the courses listed
-#               in the Hackr.io link below. When you've finished your background
-#               reading head over to ``common/common.scss`` for the next step.
+#               in the Hackr.io link below.
 # references:   https://www.youtube.com/watch?v=akDIJa0AP5c
 #               https://sass-lang.com/guide
 #               https://hackr.io/tutorials/learn-sass
+# next_step:    common/common.scss
 # /learning_step
