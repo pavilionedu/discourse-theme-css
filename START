@@ -9,12 +9,10 @@
 # description:  This unit will teach you about working with CSS in Discourse
 #               themes. This is the second unit in the Discourse Theme Development 
 #               course. Make sure you've completed the [Getting Started unit](https://github.com/pavilionedu/discourse-theme-introduction) 
-#               before starting this one. 
-#
-#               When you're ready, clone this unit's theme listed in the references 
-#               below and start watching it on the Discourse Theme creator.
+#               before starting this one. When you're ready, clone this unit's 
+#               theme listed in the references below and start watching it on 
+#               the [Discourse Theme Creator](https://theme-creator.discourse.org).
 # references:   https://github.com/pavilionedu/discourse-theme-css
-#               https://theme-creator.discourse.org
 # /learning_unit
 
 # learning_step
